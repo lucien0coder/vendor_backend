@@ -29,6 +29,9 @@ db.once('open', function() {
     var PersonSchema = new mongoose.Schema({
         name: String
     })
+    PersonSchema.method.findJen = function(){
+
+    }
 
     // kittySchema.method('sayHi',function(){
     //     console.log('Hi, I\'m schema')
@@ -51,6 +54,16 @@ db.once('open', function() {
     // personEntity.save()//保存在数据库
     //find
     PersonModel.find(function(err,person){
+        console.log('删除前...')
+        console.log(person)
+    })
+    //remove
+    PersonModel.remove({name:'Lucien'},()=>{
+        console.log('del..')
+    })
+
+    PersonModel.find((err,person)=>{
+        console.log('删除后的...')
         console.log(person)
     })
 
