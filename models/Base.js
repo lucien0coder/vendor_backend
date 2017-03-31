@@ -16,5 +16,6 @@ const BaseSchema = new mongoose.Schema({
 
 const objId = BaseSchema.Types.ObjectId;//导出主键
 
-exports.BaseSchema = BaseSchema
+exports.mongoose = mongoose
+exports.Schema = BaseSchema
 exports.ObjId = objId
