@@ -13,4 +13,9 @@ router.get('/', async function (ctx, next) {
   ctx.type = 'application/json'
   ctx.response.body = 'Hello Koa2'
 })
+
+router.get('/user', async (ctx, next)=>{
+  ctx.response.body = 'Say hi from index user'
+})
+
 module.exports = router;

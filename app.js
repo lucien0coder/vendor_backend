@@ -11,6 +11,11 @@ const logger = require('koa-logger');
 
 const index = require('./routes/index');
 const users = require('./routes/users');
+const foodComments = require('./routes/foodComments')
+const lookings = require('./routes/lookings')
+const newPost = require('./routes/newPost')
+const tracks = require('./routes/tracks')
+const bases = require('./routes/bases')
 
 // middlewares
 app.use(convert(bodyparser));
@@ -31,7 +36,12 @@ app.use(async (ctx, next) => {
 });
 
 router.use('/', index.routes(), index.allowedMethods());
-router.use('/users', users.routes(), users.allowedMethods());
+router.use('/user', users.routes(), users.allowedMethods());
+router.use('/foodComment', foodComments.routes(), foodComments.allowedMethods());
+router.use('/looking', lookings.routes(), lookings.allowedMethods());
+router.use('/post', newPost.routes(), newPost.allowedMethods());
+router.use('/track', tracks.routes(), tracks.allowedMethods());
+router.use('/base', bases.routes(), bases.allowedMethods());
 
 app.use(router.routes(), router.allowedMethods());
 // response
