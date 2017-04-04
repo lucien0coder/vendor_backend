@@ -37,7 +37,7 @@ app.use(async (ctx, next) => {
 
 router.use('/', index.routes(), index.allowedMethods());
 router.use('/user', users.routes(), users.allowedMethods());
-router.use('/foodComment', foodComments.routes(), foodComments.allowedMethods());
+router.use('/foodcomment', foodComments.routes(), foodComments.allowedMethods());
 router.use('/looking', lookings.routes(), lookings.allowedMethods());
 router.use('/post', newPost.routes(), newPost.allowedMethods());
 router.use('/track', tracks.routes(), tracks.allowedMethods());

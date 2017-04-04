@@ -1,5 +1,11 @@
 /**
- * signin signup
+ * * 0.1 POST /signin: 
+   * params:username;password
+   * return:0/1/2
+
+ * 0.2 POST /signup:
+   * params:useraccount;password;
+   * return:0/1/2
  */
 var router = require('koa-router')();
 
