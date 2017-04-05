@@ -1,7 +1,7 @@
 const base = require('./Base')
 
 const UserSchema = new base.mongoose.Schema({
-    id : base.ObjId,//继承base实体id
+    _id : base.ObjId,//继承base实体id
     level : { type:String },//用户等级
     dollars:{ type:String },//用户赏金
     pwd:{ type:String },//用户密码

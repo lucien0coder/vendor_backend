@@ -2,8 +2,6 @@ const dbConfig = require('../config/config')
 const mongoose = dbConfig.mongoose
 const db = dbConfig.db
 
-
-
 const BaseSchema = new mongoose.Schema({
     belonger : { type:String },      // 基本体，拥有者
     name : { type:String },          // 基本体，名称

@@ -15,9 +15,16 @@ exports.signin = (useraccount, password)=>{
    * return:0/1/2
    */
   exports.signup = (useraccount, password)=>{
+    console.log('----signup --newAccount：' + useraccount)
     let user = new UserModel({
       name:useraccount,
       pwd:password
     })
-    user.save();
+    try{
+      user.save();
+      console.log('----signup sucess --newAccount：'+useraccount)
+    }catch(err){
+      console.log('usermodel save exception：'+err)
+      throw err
+    }
   }
