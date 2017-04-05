@@ -1,4 +1,4 @@
-const base = require('Base')
+const base = require('./Base')
 
 const LookingSchema = new base.Schema({
     id:base.ObjId,

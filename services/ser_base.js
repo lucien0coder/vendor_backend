@@ -1,4 +1,7 @@
-
+/**
+ * 基本的功能模块
+ */
+ const BaseModel = require('../models/Base').BaseModel
  /* 1.1 GET /getLocation
    * gps 
    * */

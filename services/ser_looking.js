@@ -1,7 +1,7 @@
 /**
  * 寻食模块业务
  */
-
+const LookingModel = require('../models/Looking').LookingModel
 /* 2.1 GET /listLookingByLocalAndCondition
    * params:local
    * return:Looking

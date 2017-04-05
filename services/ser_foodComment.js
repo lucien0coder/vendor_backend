@@ -1,7 +1,7 @@
 /**
  * 食评模块业务
  */
-const FoodCommentEntity = require('./models/FoodComment').FoodCommentModel
+const FoodCommentEntity = require('../models/FoodComment').FoodCommentModel
 
  /* 1.2 GET /listFoodCommentByLocalAndCondition
    * params:local;

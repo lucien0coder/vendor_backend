@@ -1,5 +1,5 @@
 var mongoose = require('mongoose')
-// mongoose.connect('mongodb://localhost/test')
+mongoose.connect('mongodb://localhost/test')
 
 
 
@@ -10,9 +10,9 @@ var TestSchema = new mongoose.Schema({
     email : { type:String, default:'' }
 })
 
-// var db = mongoose.connection;
+var db = mongoose.connection;
 
-var db = mongoose.createConnection('localhost','test')//如此创建连接
+// var db = mongoose.createConnection('localhost','test')//如此创建连接
 
 
 

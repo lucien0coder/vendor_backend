@@ -1,6 +1,7 @@
 /**
  *用户模块 业务
  */
+const UserModel = require('../models/User').UserModel
 
  /* 4.1 GET /listMyFC/#userid
    * params:userid

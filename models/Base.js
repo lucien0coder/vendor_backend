@@ -1,6 +1,8 @@
-const db = require('../config/config')
+const dbConfig = require('../config/config')
+const mongoose = dbConfig.mongoose
+const db = dbConfig.db
 
-const mongoose = db.mongoose
+
 
 const BaseSchema = new mongoose.Schema({
     belonger : { type:String },      // 基本体，拥有者
@@ -14,7 +16,7 @@ const BaseSchema = new mongoose.Schema({
     keywords : { type:String }       // 基本体，关键字/美食分类
 })
 
-const objId = BaseSchema.Types.ObjectId;//导出主键
+const objId = mongoose.Schema.Types.ObjectId;//导出主键
 
 exports.mongoose = mongoose
 exports.Schema = BaseSchema

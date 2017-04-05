@@ -1,4 +1,4 @@
-const base = require('Base')
+const base = require('./Base')
 
 const ShopSchema = new base.Schema({
     id:base.ObjId,
