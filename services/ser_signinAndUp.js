@@ -2,7 +2,7 @@
  *  注册/登入/登出业务
  */
 const utils = require('../utils/utils')
-const UserModel = require('../models/User').UserModel
+const UserModel = require('../models/User').Model
 
  /** 0.1 POST /signin: 
    * params:username;password
