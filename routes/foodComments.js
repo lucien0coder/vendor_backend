@@ -32,8 +32,8 @@ router.get('/img/#foodCommentId', async(ctx, next)=>{
 
 /** 可用base中的方法
  *  1.4 GET /foodComment/comment/#foodComentID
-   * params:foodCommentID
-   * return:thisFCcommentList
+   * @param:foodCommentID
+   * @return:thisFCcommentList
    * direct to 「食评详情」页,显示comments和评论输入框
  */
 router.get('/comment/#foodComentID', async(ctx, next)=>{
@@ -42,8 +42,8 @@ router.get('/comment/#foodComentID', async(ctx, next)=>{
 
 /**获取详情食评页，并提示跳转到食评详细页面
  *  1.5 GET /foodComment/#socialID
-   * params:socialID
-   * return:0/1/2
+   * @param:socialID
+   * @return:0/1/2
    * direct to「食评详情」页
  */
 router.get('/#socialID', async(ctx, next)=>{

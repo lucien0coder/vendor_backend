@@ -27,43 +27,43 @@ import {utils} from '../utils/utils'
 
   }
 
- /* 4.4 GET /listMyLike/#userid
-   * params:userid
-   * return:myLikeList
+  /** 4.4 GET /listMyLike/#userid
+   * @param:userid
+   * @return:myLikeList
    */
   exports.listMyLike = (userid)=>{
 
   }
 
 
- /* 5.2 GET /myCollection/#userid
-   * params:userid
-   * return:myCollectionList
+  /** 5.2 GET /myCollection/#userid
+   * @param:userid
+   * @return:myCollectionList
    */
   exports.myCollection = (userid)=>{
 
   }
 
- /* 5.3 PUT /updateMyInfo/#userid
-   * params:USER
-   * return:0/1/2
+  /** 5.3 PUT /updateMyInfo/#userid
+   * @param:USER
+   * @return:0/1/2
    */
   exports.updateMyInfo = (userid)=>{
 
   }
 
- /* 1.7 GET /foodCirtic/#useraccount
-   * params:useraccount
-   * return:0/1/2
+  /** 1.7 GET /foodCirtic/#useraccount
+   * @param:useraccount
+   * @return:0/1/2
    * direct to 「美食家详情」页
    * */
   exports.userinfo = (userid)=>{
 
   }
 
- /* 5.1 GET /myInfo/#userid
-   * params:userid
-   * return:USER
+  /** 5.1 GET /myInfo/#userid
+   * @param:userid
+   * @return:USER
    */
   exports.myInfo = (userid)=>{
 

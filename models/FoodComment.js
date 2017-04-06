@@ -1,12 +1,15 @@
-const base = require('./Base')
+const base = require('./Base'),
+    extend = base.extend,
+    mongoose = base.mongoose,
+    BaseSchema = base.Schema
 
-const FoodCommentSchema = new base.mongoose.Schema({
-    id:base.ObjId,
-    content:{ type:String },//食评内容
-    img:{},//食评配图
-    preview:{},//食评贴效果
-    shop:{}//相应店铺
+const FoodCommentSchema = BaseSchema.extend({
+    content:{ type:String, default:'' },//食评内容
+    img:{ type:String, default:'' },//食评配图
+    preview:{ type:String, default:'' },//食评贴效果
+    shop:{ type:String, default:'' }//相应店铺
 })
 
-const FoodCommentModel = base.mongoose.model('FoodComment', FoodCommentSchema)
-exports.FoodCommentModel = FoodCommentModel
+module.exports = {
+    Model :  mongoose.model('FoodComment', FoodCommentSchema)
+}

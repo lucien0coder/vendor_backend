@@ -1,10 +1,13 @@
-const base = require('./Base')
+const base = require('./Base'),
+    extend = base.extend,
+    mongoose = base.mongoose,
+    BaseSchema = base.Schema
 
-const ShopSchema = new base.mongoose.Schema({
-    id:base.ObjId,
-    its_lookings:{ type:String },//店铺发出的寻食贴
-    bussiness_hours:{ type:String }//店铺营业时间 
+const ShopSchema = BaseSchema.extend({
+    its_lookings:{ type:String, default:'' },//店铺发出的寻食贴
+    bussiness_hours:{ type:String, default:'' }//店铺营业时间 
 })
 
-const ShopModel = base.mongoose.model('Shop',ShopSchema)
-exports.ShopModel = ShopModel //导出店铺实体
+module.exports = {
+    Model : mongoose.model('Shop',ShopSchema)
+} //导出店铺实体

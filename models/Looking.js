@@ -1,14 +1,17 @@
-const base = require('./Base')
+const base = require('./Base'),
+    extend = base.extend,
+    mongoose = base.mongoose,
+    BaseSchema = base.Schema
 
-const LookingSchema = new base.mongoose.Schema({
-    id:base.ObjId,
-    look_type:{ type:String },//寻食贴类型，求荐还是来尝
-    prescription:{ type:String },//贴子有效期
-    value:{ type:String },//贴子赏金金额
-    beneficiary:{ type:String },//赏金发放人
-    answers:{ type:String },//答案
-    release_time:{ type:String }//发帖时间
+const LookingSchema = BaseSchema.extend({
+    look_type:{ type:String, default:'' },//寻食贴类型，求荐还是来尝
+    prescription:{ type:String, default:'' },//贴子有效期
+    value:{ type:String, default:'' },//贴子赏金金额
+    beneficiary:{ type:String, default:'' },//赏金发放人
+    answers:{ type:String, default:'' },//答案
+    release_time:{ type:String, default:'' }//发帖时间
 })
 
-const LookingModel = base.mongoose.model('Looking',LookingSchema)
-exports.LookingModel = LookingModel
+module.exports = {
+    Model : mongoose.model('Looking',LookingSchema)
+}

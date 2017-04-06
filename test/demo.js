@@ -1,6 +1,8 @@
-const signModal = require('../services/ser_signinAndUp')
-// const shopModal = require('../services/ser_shop')
-// const lookingModal = require('../services/ser_looking')
-// const foodComment = require('../services/ser_foodComment')
+const signModal = require('../services/ser_signinAndUp'),
+    shopModal = require('../services/ser_shop'),
+    lookingModal = require('../services/ser_looking'),
+    foodComment = require('../services/ser_foodComment'),
+    utils = require('../utils/utils')
 
-signModal.signup('lucien','22222')
+// signModal.signup('lucien','22222')
+utils.cons('info', 'Hello console!')
