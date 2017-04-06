@@ -1,6 +1,6 @@
 const base = require('./Base')
 
-const FoodCommentSchema = new base.Schema({
+const FoodCommentSchema = new base.mongoose.Schema({
     id:base.ObjId,
     content:{ type:String },//食评内容
     img:{},//食评配图

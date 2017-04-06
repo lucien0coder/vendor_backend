@@ -1,7 +1,8 @@
-const base = require('./Base')
+const base = require('./Base'),
+    mongoose = base.mongoose,
+    BaseSchema = base.Schema
 
-const UserSchema = new base.mongoose.Schema({
-    _id : base.ObjId,//继承base实体id
+const UserSchema = BaseSchema({
     level : { type:String },//用户等级
     dollars:{ type:String },//用户赏金
     pwd:{ type:String },//用户密码
@@ -11,7 +12,8 @@ const UserSchema = new base.mongoose.Schema({
     my_collections:{ type:String }//用户的收藏
 })
 
-const UserModel = base.mongoose.model('User', UserSchema)
-exports.UserModel = UserModel //导出用户模型，便于被实例化
+module.exports = {
+    Model :  mongoose.model('user',UserSchema)//导出用户模型，便于被实例化
+}
 
 

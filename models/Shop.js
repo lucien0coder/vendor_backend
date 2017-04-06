@@ -1,6 +1,6 @@
 const base = require('./Base')
 
-const ShopSchema = new base.Schema({
+const ShopSchema = new base.mongoose.Schema({
     id:base.ObjId,
     its_lookings:{ type:String },//店铺发出的寻食贴
     bussiness_hours:{ type:String }//店铺营业时间 

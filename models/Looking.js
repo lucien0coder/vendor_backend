@@ -1,6 +1,6 @@
 const base = require('./Base')
 
-const LookingSchema = new base.Schema({
+const LookingSchema = new base.mongoose.Schema({
     id:base.ObjId,
     look_type:{ type:String },//寻食贴类型，求荐还是来尝
     prescription:{ type:String },//贴子有效期

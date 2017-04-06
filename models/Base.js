@@ -1,8 +1,10 @@
-const dbConfig = require('../config/config')
-const mongoose = dbConfig.mongoose
-const db = dbConfig.db
+const dbConfig = require('../config/config'),
+    mongoose = dbConfig.mongoose,
+    db = dbConfig.db,
+    extend = dbConfig.extend,
+    Schema = mongoose.Schema
 
-const BaseSchema = new mongoose.Schema({
+const BaseSchema = new Schema({
     belonger : { type:String },      // 基本体，拥有者
     name : { type:String },          // 基本体，名称
     local : { type:String},         // 基本体，位置
@@ -12,10 +14,10 @@ const BaseSchema = new mongoose.Schema({
     comments : { type:String },      // 基本体，对象收到的评论集合
     entityType : { type:String },    // 基本体，对象类型
     keywords : { type:String }       // 基本体，关键字/美食分类
-})
+},{collection : 'social', discriminatorKey : '_type'})
 
-const objId = mongoose.Schema.Types.ObjectId;//导出主键
-
-exports.mongoose = mongoose
-exports.Schema = BaseSchema
-exports.ObjId = objId
+module.exports = {
+    Schema : BaseSchema.extend(),
+    mongoose : mongoose,
+    Model : mongoose.model('social', BaseSchema)
+}
