@@ -29,7 +29,7 @@ router.get('/in', async(ctx, next)=>{
    * @param:useraccount;password;
    * @return:0/1/2
    */
-router.get('/up', async(ctx, next)=>{
+router.post('/up', async(ctx, next)=>{
   console.log('into signup route')
   console.log(ctx.request.body)
   let useraccount = '';

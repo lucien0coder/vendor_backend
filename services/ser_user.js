@@ -2,7 +2,7 @@
  *用户模块 业务
  */
 const UserModel = require('../models/User').UserModel
-import {utils} from '../utils/utils'
+const utils = require( '../utils/utils')
  /* 4.1 GET /listMyFC/#userid
    * params:userid
    * return:myFCList

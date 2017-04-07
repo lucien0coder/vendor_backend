@@ -38,6 +38,8 @@ app.use(async (ctx, next) => {
 
 // router.use('/', index.routes(), index.allowedMethods());
 router.all('/',(ctx)=>{
+  // console.log('ctx')
+  // console.log(ctx.request.body)
   ctx.redirect('/sign/in')
 })
 router.use('/sign', sign.routes(), sign.allowedMethods())
