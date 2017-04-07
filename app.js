@@ -9,13 +9,14 @@ const onerror = require('koa-onerror');
 const bodyparser = require('koa-bodyparser')();
 const logger = require('koa-logger');
 
-const index = require('./routes/index');
+const sign = require('./routes/sign');
 const users = require('./routes/users');
 const foodComments = require('./routes/foodComments')
 const lookings = require('./routes/lookings')
 const newPost = require('./routes/newPost')
 const tracks = require('./routes/tracks')
 const bases = require('./routes/bases')
+
 
 // middlewares
 app.use(convert(bodyparser));
@@ -35,7 +36,11 @@ app.use(async (ctx, next) => {
   console.log(`${ctx.method} ${ctx.url} - ${ms}ms`);
 });
 
-router.use('/', index.routes(), index.allowedMethods());
+// router.use('/', index.routes(), index.allowedMethods());
+router.all('/',(ctx)=>{
+  ctx.redirect('/sign/in')
+})
+router.use('/sign', sign.routes(), sign.allowedMethods())
 router.use('/user', users.routes(), users.allowedMethods());
 router.use('/foodcomment', foodComments.routes(), foodComments.allowedMethods());
 router.use('/looking', lookings.routes(), lookings.allowedMethods());

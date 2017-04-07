@@ -26,13 +26,13 @@ exports.signup = (useraccount, password)=>{
   try{
     user.save((err,rs)=>{
       if(err){
-        utils.cons('err', 'signup save err' + err)
+        utils.cons('err', 'signup save err: ' + err)
       }else{
-        utils.cons('info','signup success:' + useraccount)
+        utils.cons('info','signup success: ' + useraccount)
       }
     });
   }catch(err){
-    utils.cons('err', 'UserModel save err:' + err)
+    utils.cons('err', 'UserModel save err: ' + err)
     throw err
   }
 }
