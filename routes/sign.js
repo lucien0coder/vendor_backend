@@ -1,5 +1,6 @@
-let router = require('koa-router')();
-let user_service = require('../services/ser_signinAndUp')
+const router = require('koa-router')();
+const user_service = require('../services/ser_signinAndUp')
+const utils = require('../utils/utils')
 
 // router.get('/', async function (ctx, next) {
 // })
@@ -30,12 +31,20 @@ router.get('/in', async(ctx, next)=>{
    * @return:0/1/2
    */
 router.post('/up', async(ctx, next)=>{
-  console.log('into signup route')
-  console.log(ctx.request.body)
-  let useraccount = '';
-  let password = '';
-  // await user_service.signup(useraccount, password)
-  ctx.body = 'get your info'
+  utils.cons('info','into signup route')
+  let params = ctx.request.body;
+  let useraccount = params.useraccount || '';
+  let password = params.password || '';
+  let result ={ 
+    data : await user_service.signup(useraccount, password) 
+  }
+  ctx.type = 'application/json'
+  if(result.data == 2){
+    ctx.state = '500'
+  }else{
+    ctx.state = '200'
+  }
+  ctx.body = result
 })
 
 module.exports = router;

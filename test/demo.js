@@ -18,9 +18,10 @@ request(app)
       useraccount:'lucien',
       password:'22121'
   })
-//   .expect('Content-Type', /json/)
+  .expect('Content-Type', /json/)
 //   .expect('Content-Length', '15')
-//   .expect(200)
+  .expect(200)
   .end(function(err, res) {
+    console.log(res)
     if (err) throw err;
   });

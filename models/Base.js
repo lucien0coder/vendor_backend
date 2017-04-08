@@ -5,7 +5,7 @@ const dbConfig = require('../config/config'),
     Schema = mongoose.Schema
 
 const BaseSchema = new Schema({
-    belonger : { type:Schema.Types.ObjectId, default:0 },      // 基本体，拥有者
+    belonger : { type:Schema.Types.ObjectId },      // 基本体，拥有者
     name : { type:String, default:'' },          // 基本体，名称
     local : { type:String, default:''},         // 基本体，位置
     photo : { type:String, default:'' },         // 基本体，大头贴  url
