@@ -11,7 +11,7 @@ router.get('/', function (ctx, next) {
    * @return:0/1/2
    * direct to 「美食家详情」页
  */
-router.get('/#socialID', async(ctx, next)=>{，，
+router.get('/#socialID', async(ctx, next)=>{
 
 })
 
