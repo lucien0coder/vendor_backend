@@ -1,12 +1,11 @@
-const sign_service = require('../../services/ser_signinAndUp')
+const sign_service = require('../services/ser_signinAndUp')
 const should = require('should');
 
-describe('sign',()=>{
+describe('SERVICE - SIGN',()=>{
     describe('#FindUser()',()=>{
-        it('finduser without err', async (done)=>{
-            let a = sign_service.FindUser('jennifer')
+        it('finduser without err', async ()=>{
+            let a = await sign_service.FindUser('jennifer')
             console.log(a)
-            done()
         })
     })
 
@@ -16,3 +15,7 @@ describe('sign',()=>{
     //     })
     // ])
 })
+
+// describe('ROUTE - GETUSER', ()=>{
+    
+// })

@@ -8,7 +8,7 @@ const UserModel = require('../models/User').Model
    * @param:username;password
    * @return:0/1/2 (success/fails/err)
    * */
-function signin (useraccount, password){
+const signin = async(useraccount, password)=>{
 
 }
 
@@ -17,7 +17,7 @@ function signin (useraccount, password){
    * @param:password
    * @return:0/1/2 (success/fails/err)
    */
-function signup(useraccount, password){
+const signup = async(useraccount, password)=>{
   utils.cons('info', 'signup: ' + useraccount)
   let result = 1
   let user = new UserModel({
@@ -27,7 +27,7 @@ function signup(useraccount, password){
   try{
     //查找是否有相同用户名称，如没有执行save，有则返回失败
 
-    user.save((err,rs)=>{
+    await user.save((err,rs)=>{
       if(err){
         utils.cons('err', 'signup save err: ' + err)
         result = 2
@@ -49,21 +49,23 @@ function signup(useraccount, password){
  * @param: useraccount
  * @return:0/1/2 (/none/exist/err)
  */
-function findUser(useraccount){
+const findUser = async(useraccount)=>{
   utils.cons('info', 'findUser: ' + useraccount)
   if(useraccount){
     try{
-      UserModel.find({name:useraccount}, (err, rs)=>{
-        if(err) return 2
+      let r;
+      await UserModel.find({name:useraccount}, (err, rs)=>{
+        if(err) r = 2
         else {
            utils.cons('info', 'FindUser  success')
           if(rs.length == 0){
-            return 0
+            r = 0
           }else{
-            return 1
+            r = 1
           }
         }
       })
+      return r
     }catch(err){
       utils.cons('err', 'ser_sing FindUser')
       throw err
