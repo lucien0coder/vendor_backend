@@ -8,7 +8,7 @@ const UserModel = require('../models/User').Model
    * @param:username;password
    * @return:0/1/2 (success/fails/err)
    * */
-exports.signin = (useraccount, password)=>{
+function signin (useraccount, password){
 
 }
 
@@ -17,7 +17,7 @@ exports.signin = (useraccount, password)=>{
    * @param:password
    * @return:0/1/2 (success/fails/err)
    */
-exports.signup = (useraccount, password)=>{
+function signup(useraccount, password){
   utils.cons('info', 'signup: ' + useraccount)
   let result = 1
   let user = new UserModel({
@@ -26,6 +26,7 @@ exports.signup = (useraccount, password)=>{
   })
   try{
     //查找是否有相同用户名称，如没有执行save，有则返回失败
+
     user.save((err,rs)=>{
       if(err){
         utils.cons('err', 'signup save err: ' + err)
@@ -48,6 +49,32 @@ exports.signup = (useraccount, password)=>{
  * @param: useraccount
  * @return:0/1/2 (/none/exist/err)
  */
-exports.findUser = (useraccount)=>{
-  utils.cons('info', 'findUser: ')
+function findUser(useraccount){
+  utils.cons('info', 'findUser: ' + useraccount)
+  if(useraccount){
+    try{
+      UserModel.find({name:useraccount}, (err, rs)=>{
+        if(err) return 2
+        else {
+           utils.cons('info', 'FindUser  success')
+          if(rs.length == 0){
+            return 0
+          }else{
+            return 1
+          }
+        }
+      })
+    }catch(err){
+      utils.cons('err', 'ser_sing FindUser')
+      throw err
+    }
+  }else{
+    return 'useraccount is null'
+  }
+}
+
+module.exports = {
+  Signin : signin,
+  Signup : signup,
+  FindUser : findUser
 }

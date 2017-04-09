@@ -13,7 +13,8 @@ const request = require('supertest-koa-agent');
 const app = require('../app');
 
 request(app)
-  .post('/sign/up')
+  // .post('/sign/up')
+  .get('/sign/find')
   .send({
       useraccount:'lucien',
       password:'22121'

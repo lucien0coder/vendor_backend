@@ -88,10 +88,14 @@ let golf = new Looking({
 
 // accord.save()
 // golf.save()
-Social.find({}, function(err, socials){
-    console.log(socials[0])
-    console.log(socials[1])
+// Social.find({}, function(err, socials){
+//     console.log(socials[0])
+//     console.log(socials[1])
+// })
+let qu = Social.find({make:'Dos Auto'},(err, rs)=>{
+    if(err){
+
+    }else{
+        console.log(rs)
+    }
 })
-
-
-
