@@ -9,7 +9,17 @@ const UserModel = require('../models/User').Model
    * @return:0/1/2 (success/fails/err)
    * */
 const signin = async(useraccount, password)=>{
-
+  // 拿到用户名称查找密码，如无异常返回则，判断密码是否匹配。正常匹配
+  utils.cons('info', 'signin')
+  let r = 1
+  try{
+    UserModel.find({name:useraccount}, (err,rs)=>{
+      if(err)  
+    })
+  }catch(err){
+    utils.cons('err', 'userModel signin err:'+err)
+    throw err
+  }
 }
 
   /** 0.2 POST /signup:

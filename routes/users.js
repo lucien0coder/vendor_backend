@@ -1,5 +1,7 @@
-var router = require('koa-router')();
-var uService = require('../services/ser_user')
+const router = require('koa-router')(),
+  uService = require('../services/ser_user'),
+  utils = require('../utils/utils')
+
 
 router.get('/', function (ctx, next) {
   ctx.body = 'this a users response!';
@@ -11,8 +13,12 @@ router.get('/', function (ctx, next) {
    * @return:0/1/2
    * direct to 「美食家详情」页
  */
-router.get('/#socialID', async(ctx, next)=>{
-
+router.get('/:useraccount', async(ctx, next)=>{
+  let useraccount = ctx.params.useraccount
+  utils.cons('info','user/'+useraccount)
+  ctx.type = 'application/json'
+  ctx.body = await uService.userinfo(useraccount)
+  ctx.body = useraccount
 })
 
 /**

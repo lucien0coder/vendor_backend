@@ -97,5 +97,8 @@ let qu = Social.find({make:'Dos Auto'},(err, rs)=>{
 
     }else{
         console.log(rs)
+        rs.forEach((r, index)=>{
+            console.log(r.route)
+        })
     }
 })

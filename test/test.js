@@ -1,33 +1,83 @@
-const sign_service = require('../services/ser_signinAndUp')
+const sign_service = require('../services/ser_signinAndUp'),
+    user_service = require('../services/ser_user')
 const request = require('supertest-koa-agent');
 const app = require('../app');
-const should = require('should');
+const assert = require('chai').assert
 
 describe('SERVICE - SIGN',()=>{
     describe('#FindUser()',()=>{
         it('finduser without err', async ()=>{
             let a = await sign_service.FindUser('jennifer')
-            console.log(a)
+            assert.typeOf(a, 'Number')
+            assert.equal(a, 0)
         })
     })
 
-    // describe('#signup',()=>[
-    //     it('save user without err', (done)=>{
-    //         sign_service.Signup('jennifer', 'chenwutong')
-    //     })
-    // ])
+    describe('#signup',()=>[
+        it('save user without err', (done)=>{
+            let a = await sign_service.Signup('jennifer', 'chenwutong')
+            assert.typeOf(a, 'Number')
+            assert.equal(a, 0)
+        })
+    ])
 })
 
-describe('ROUTE - GETUSER', ()=>{
+describe('SERVICE - USER',()=>{
+    describe('#Userinfo()', ()=>{
+        it('find userinfo without err', async()=>{
+            
+        })
+    })
+})
+
+describe('SERVICE - SHOP',()=>{
+    describe('#Userinfo()', ()=>{
+        it('find userinfo without err', async()=>{
+            
+        })
+    })
+})
+
+describe('SERVICE - LOOKING',()=>{
+    describe('#Userinfo()', ()=>{
+        it('find userinfo without err', async()=>{
+            
+        })
+    })
+})
+
+describe('SERVICE - FOODCOMMENT',()=>{
+    describe('#Userinfo()', ()=>{
+        it('find userinfo without err', async()=>{
+            
+        })
+    })
+})
+
+describe('SERVICE - BASE',()=>{
+    describe('#Userinfo()', ()=>{
+        it('find userinfo without err', async()=>{
+            
+        })
+    })
+})
+
+
+
+
+
+
+/*
+describe('ROUTE - SIGN', ()=>{
     describe('#',()=>{
         it('', async()=>{
             request(app)
                 // .post('/sign/up')
-                .get('/sign/up')
-                .send({
-                    useraccount:'jennifer',
-                    password:'221'
-                })
+                .get('/user/lucien')
+                // .send({
+                //     useraccount:'jennifer',
+                //     password:'221'
+                // })
                 .expect('Content-Type', /json/)
                 //   .expect('Content-Length', '15')
                 .expect(200)
@@ -37,4 +87,7 @@ describe('ROUTE - GETUSER', ()=>{
                 });
         })
     })
+    describe('#')
 })
+
+*/
