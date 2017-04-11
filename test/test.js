@@ -9,13 +9,21 @@ describe('SERVICE - SIGN',()=>{
         it('finduser without err', async ()=>{
             let a = await sign_service.FindUser('jennifer')
             assert.typeOf(a, 'Number')
-            assert.equal(a, 0)
+            assert.equal(a, 1)
         })
     })
 
     describe('#signup',()=>[
-        it('save user without err', (done)=>{
-            let a = await sign_service.Signup('jennifer', 'chenwutong')
+        it('save user without err', async()=>{
+            let a = await sign_service.Signup('jennifer', 'chenwutong')//已经存在数据库，所以会保存失败fails
+            assert.typeOf(a, 'Number')
+            assert.equal(a, 1)
+        })
+    ])
+
+    describe('#signin',()=>[
+        it('verify user without err', async()=>{
+            let a = await sign_service.Signin('jennifer', 'chenwutong')
             assert.typeOf(a, 'Number')
             assert.equal(a, 0)
         })
@@ -25,7 +33,7 @@ describe('SERVICE - SIGN',()=>{
 describe('SERVICE - USER',()=>{
     describe('#Userinfo()', ()=>{
         it('find userinfo without err', async()=>{
-            
+
         })
     })
 })

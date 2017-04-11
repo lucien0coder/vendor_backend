@@ -13,13 +13,20 @@ const signin = async(useraccount, password)=>{
   utils.cons('info', 'signin')
   let r = 1
   try{
-    UserModel.find({name:useraccount}, (err,rs)=>{
-      if(err)  
+    let getter_user = await UserModel.find({useraccount:useraccount}, (err,rs)=>{
+      if(err) throw err
     })
+    getter_user.forEach((user,index)=>{
+      getter_password = user.pwd
+    })
+    if(password == getter_password) r = 0
+    utils.cons('info', 'userModel signin return success')
   }catch(err){
     utils.cons('err', 'userModel signin err:'+err)
+    r = 2
     throw err
   }
+  return r
 }
 
   /** 0.2 POST /signup:
@@ -31,21 +38,28 @@ const signup = async(useraccount, password)=>{
   utils.cons('info', 'signup: ' + useraccount)
   let result = 1
   let user = new UserModel({
+    useraccount : useraccount,
     name:useraccount,
     pwd:password
   })
   try{
     //查找是否有相同用户名称，如没有执行save，有则返回失败
-
-    await user.save((err,rs)=>{
-      if(err){
-        utils.cons('err', 'signup save err: ' + err)
-        result = 2
-      }else{
-        result = 0
-        utils.cons('info','signup success: ' + useraccount)
-      }
-    });
+    let flg = false // 默认没有相同名称
+    await UserModel.find({useraccount: useraccount}, (err, rs)=>{
+      if(err) throw err
+      else if(rs.length != 0) flg = true //有同名用户
+    })
+    if(!flg){
+      await user.save((err,rs)=>{
+        if(err){
+          utils.cons('err', 'signup save err: ' + err)
+          result = 2
+        }else{
+          result = 0
+          utils.cons('info','signup success: ' + useraccount)
+        }
+      });
+    }
   }catch(err){
     result = 2
     utils.cons('err', 'UserModel save err: ' + err)
@@ -64,7 +78,7 @@ const findUser = async(useraccount)=>{
   if(useraccount){
     try{
       let r;
-      await UserModel.find({name:useraccount}, (err, rs)=>{
+      await UserModel.find({useraccount:useraccount}, (err, rs)=>{
         if(err) r = 2
         else {
            utils.cons('info', 'FindUser  success')

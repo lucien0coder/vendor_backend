@@ -10,7 +10,7 @@ const LookingSchema = BaseSchema.extend({
     beneficiary:{ type:[LookingSchema.Types.ObjectId], default:[] },//赏金发放人
     answers:{ type:mixed, default:{} },     //答案 {user:answer}
     release_time:{ type:Date, default:Date.now() }//发帖时间
-})
+}, {collection : 'lookings'})
 
 module.exports = {
     Model : mongoose.model('Looking',LookingSchema)

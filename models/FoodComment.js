@@ -8,7 +8,7 @@ const FoodCommentSchema = BaseSchema.extend({
     img:{ type:String, default:'' },//食评配图 url
     preview:{ type:String, default:'' },//食评贴效果 url
     shop:{ type:[String], default:'' }//相应店铺 
-})
+},{collection : 'foodcomments'})
 
 module.exports = {
     Model :  mongoose.model('FoodComment', FoodCommentSchema)
