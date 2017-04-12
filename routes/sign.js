@@ -28,10 +28,10 @@ router.post('/up', async(ctx, next)=>{
   let params = ctx.request.body;
   let useraccount = params.useraccount || '';
   let password = params.password || '';
-  let result = await user_service.Signup(useraccount, password) 
+  let rs = await user_service.Signup(useraccount, password) 
   ctx.type = 'application/json'
   ctx.state = (rs == 0 && '200') || ( rs == 1 && '200') || ( rs == 2 && '500')
-  ctx.body = result
+  ctx.body = rs
 })
 
 module.exports = router;

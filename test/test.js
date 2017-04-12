@@ -75,17 +75,16 @@ describe('SERVICE - BASE',()=>{
 
 
 
-/*
 describe('ROUTE - SIGN', ()=>{
     describe('#',()=>{
         it('', async()=>{
             request(app)
-                // .post('/sign/up')
-                .get('/user/lucien')
-                // .send({
-                //     useraccount:'jennifer',
-                //     password:'221'
-                // })
+                .post('/sign/up')
+                // .get('/user/lucien')
+                .send({
+                    useraccount:'jennifer',
+                    password:'221'
+                })
                 .expect('Content-Type', /json/)
                 //   .expect('Content-Length', '15')
                 .expect(200)
@@ -95,7 +94,8 @@ describe('ROUTE - SIGN', ()=>{
                 });
         })
     })
-    describe('#')
+    // describe('#')
 })
+/*
 
 */

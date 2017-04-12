@@ -35,6 +35,7 @@ const UserModel = require('../models/User').Model,
    * @return:myLookingList
    * */
   const listMyLooking = async (useraccount)=>{
+    utils.cons('info', 'listMyLooking')
     //1 从looking中获取到belonger为ua的列表，从user中获取mylooking列表
     let result = '';
     let ua = useraccount || ''
@@ -58,6 +59,7 @@ const UserModel = require('../models/User').Model,
    * @return:myPCList  / 1 / 2 
    */
   const listMyPC = async (useraccount)=>{
+    utils.cons('info', 'listMyPC')
     let result = '';
     let ua = useraccount || ''
     if(ua){
@@ -84,6 +86,7 @@ const UserModel = require('../models/User').Model,
    * @return:myLikeList
    */
   const listMyLike = async (useraccount)=>{
+    utils.cons('info', 'listMyLike')
     let result = '';
     let ua = useraccount || ''
     if(ua){
@@ -111,6 +114,7 @@ const UserModel = require('../models/User').Model,
    * @return:myCollectionList
    */
   const myCollection = async (useraccount)=>{
+    utils.cons('info', 'myCollection')
     let result = '';
     let ua = useraccount || ''
     if(ua){
@@ -137,6 +141,7 @@ const UserModel = require('../models/User').Model,
    * @return:0/1/2
    */
   const updateMyInfo = async (user)=>{
+    utils.cons('info', 'updateMyInfo')
     let r = 1 //传入的参数异常，useraccount 为空的
     let ua = user.useraccount || ''
     let update = {$set: user}
@@ -149,6 +154,7 @@ const UserModel = require('../models/User').Model,
         })
       }catch(err){
         r = 2
+        utils.cons('err', 'myCollection err:'+err)
         throw err
       }
     }
