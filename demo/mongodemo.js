@@ -92,13 +92,21 @@ let golf = new Looking({
 //     console.log(socials[0])
 //     console.log(socials[1])
 // })
-let qu = Social.find({make:'Dos Auto'},(err, rs)=>{
+let qu = Looking.find({make:'Dos Auto'},(err, rs)=>{
     if(err){
 
     }else{
         console.log(rs)
-        rs.forEach((r, index)=>{
-            console.log(r.route)
-        })
+      
+        // rs.forEach((r, index)=>{
+            // console.log(r)
+        // })
     }
 })
+
+let condition = {make: 'Dos Auto'},
+    update = {$set: {route:40}}
+Social.update(condition, update, (err, rs)=>{
+    console.log(rs)
+})
+

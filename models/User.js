@@ -11,7 +11,8 @@ const UserSchema = BaseSchema.extend({
     my_lookings:{ type:[mongoose.Schema.Types.ObjectId] },//用户发出的寻食贴
     my_comments:{ type:mongoose.Schema.Types.Mixed, default:{} },//用户发出的评论 {date:{obj:comment}}
     my_fcs:{ type:[mongoose.Schema.Types.ObjectId] },//用户发布的食评
-    my_collections:{ type:[mongoose.Schema.Types.ObjectId] }//用户的收藏
+    my_collections:{ type:[mongoose.Schema.Types.ObjectId] },//用户的收藏
+    my_likes:{ type:[mongoose.Schema.Types.ObjectId] }//用户的点赞列表
 }, {collection : 'users'})
 
 module.exports = {

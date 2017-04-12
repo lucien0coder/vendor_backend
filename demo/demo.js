@@ -9,20 +9,24 @@
 // utils.cons('info', 'Hello console!')
 
 // indexRoute.cpmst
-const request = require('supertest-koa-agent');
-const app = require('../app');
+// const request = require('supertest-koa-agent');
+// const app = require('../app');
 
-request(app)
-  // .post('/sign/up')
-  .get('/sign/find')
-  .send({
-      useraccount:'lucien',
-      password:'22121'
-  })
-  .expect('Content-Type', /json/)
-//   .expect('Content-Length', '15')
-  .expect(200)
-  .end(function(err, res) {
-    console.log(res)
-    if (err) throw err;
-  });
+// request(app)
+//   // .post('/sign/up')
+//   .get('/sign/find')
+//   .send({
+//       useraccount:'lucien',
+//       password:'22121'
+//   })
+//   .expect('Content-Type', /json/)
+// //   .expect('Content-Length', '15')
+//   .expect(200)
+//   .end(function(err, res) {
+//     console.log(res)
+//     if (err) throw err;
+//   });
+
+let a = ''
+if(a) console.log('get a ')
+else console.log('true')
