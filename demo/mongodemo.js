@@ -69,7 +69,8 @@ let FoodCommentSchema = SocicalSchema.extend({
 })
 
 let LookingSchema = SocicalSchema.extend({
-    route : Number
+    route : Number,
+    vendoer: {type:[mongoose.Schema.Types.Mixed]}
 })
 
 let Social = mongoose.model('social',SocicalSchema),
@@ -81,32 +82,44 @@ let accord = new FoodComment({
     year:'2015'
 })
 
-let golf = new Looking({
-    make: 'Dos Auto',
-    route: 33
+let ford = new Looking({
+    make: 'Ford',
+    route: 33,
+    vendoer:[
+        {user:'lucien'},
+        {user:'Jennifer'}
+    ]
 })
-
+// ford.save()
 // accord.save()
 // golf.save()
 // Social.find({}, function(err, socials){
 //     console.log(socials[0])
 //     console.log(socials[1])
 // })
-let qu = Looking.find({make:'Dos Auto'},(err, rs)=>{
+let qu = Looking.findOne({_id:'58eecdc69e176c25e4974bd9'},(err, rs)=>{
     if(err){
 
     }else{
-        console.log(rs)
-      
+        console.log(rs.vendoer)
+        console.log(typeof(rs.vendoer))
         // rs.forEach((r, index)=>{
             // console.log(r)
         // })
     }
 })
 
-let condition = {make: 'Dos Auto'},
-    update = {$set: {route:40}}
-Social.update(condition, update, (err, rs)=>{
-    console.log(rs)
-})
+// let condition = {make: 'Ford'}
+// Looking.findOne(condition, (err, rs)=>{
+//     if(!err){
+//         console.log(rs)
+//         let addingUser = {name:'Ttida'}
+//         let vend = rs.vendoer
+//         vend.push(addingUser)
+//         let update = {$set: {vendoer:vend}}
+//         Looking.update(condition, update, (err, rs)=>{
+//             console.log(rs)
+//         })
+//     }
+// })
 

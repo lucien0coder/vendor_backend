@@ -7,7 +7,7 @@ var router = require('koa-router')();
  * return:FoodCommentList
  */
 router.get('/',async(ctx, next)=>{
-    ctx.response.body = 'listByLocalAndCondition'
+    ctx.body = 'listByLocalAndCondition'
 })
 
 /**

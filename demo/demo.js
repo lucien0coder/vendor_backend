@@ -27,6 +27,22 @@
 //     if (err) throw err;
 //   });
 
-let a = ''
-if(a) console.log('get a ')
+let a = {date:Date.now()}
+if(a.date) console.log('get a ')
 else console.log('true')
+
+// const foo = (params)=>{
+//     return params *2
+// }
+
+// const util = require('util');
+// const debuglog = util.debuglog('foo');
+
+// debuglog('hello from foo [%d]', 123);
+// let a = {name:'lucien'}
+// let b = {age:28}
+// let c = {local:'guangzhou',job:'coder'}
+
+// let d = Object.assign(a,b,c)
+
+// console.log(d)

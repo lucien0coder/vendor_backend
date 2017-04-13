@@ -4,8 +4,8 @@ const base = require('./Base'),
     BaseSchema = base.Schema
 
 const ShopSchema = BaseSchema.extend({
-    its_lookings:{ type:[ShopSchema.Types.ObjectId] },//店铺发出的来尝贴
-    bussiness_hours:{ type:mixed, default:{} }//店铺营业时间 {startTime:xxx,endTime:xxx}
+    its_lookings:{ type:[mongoose.Schema.Types.ObjectId] },//店铺发出的来尝贴
+    bussiness_hours:{ type:mongoose.Schema.Types.Mixed, default:{} }//店铺营业时间 {startTime:xxx,endTime:xxx}
 },{collection : 'shops'})
 
 module.exports = {

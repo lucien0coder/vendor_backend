@@ -22,7 +22,7 @@ router.get('/#socialID', async(ctx, next)=>{
 
 /**
  * 抢来尝贴或者回答寻食贴
- *  2.3 POST /looking/beAVendor/#socialID/USER(temporary)
+ *  2.3 POST /looking/beAVendor
    * @param:socialId;USER
    * @return:0/1/2
  */
