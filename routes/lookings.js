@@ -1,4 +1,6 @@
-var router = require('koa-router')();
+let router = require('koa-router')();
+const sLooking = require('../services/ser_looking'),
+  utils = require('../utils/utils')
 
 /** 
    * 通过定位和条件获取寻食贴
@@ -7,7 +9,11 @@ var router = require('koa-router')();
    * @return:Looking
    */ 
 router.get('/', async(ctx, next)=>{
-     ctx.response.body = 'listLooking'
+    let params = ctx.request.body || {}
+    let lookingList = await sLooking.listLookingByLocalAndCondition(params)
+    ctx.type = 'application/json'
+    ctx.state = (lookingList == 2 && '500') || '200'
+    ctx.body = lookingList
 })
 
 /**
@@ -16,8 +22,12 @@ router.get('/', async(ctx, next)=>{
    * @param:socialId
    * direct to「寻食详情」页
  */
-router.get('/#socialID', async(ctx, next)=>{
-
+router.get('/:socialID', async(ctx, next)=>{
+    let sid = ctx.params.socialID || {}
+    let looking = await sLooking.lookingDetails(sid)
+    ctx.type = 'application/json'
+    ctx.state = (looking == 2 && '500') || '200'
+    ctx.body = looking
 })
 
 /**
@@ -27,7 +37,13 @@ router.get('/#socialID', async(ctx, next)=>{
    * @return:0/1/2
  */
 router.post('/beAVendor', async(ctx, next)=>{
-    
+    let params = ctx.request.body || {}
+    let socialID = params.sid || ''
+    let user = params.user || {}
+    let rs = await sLooking.addVendor(socialID, user)
+    ctx.type = 'application/json'
+    ctx.state = (rs == 2 && '500') || '200'
+    ctx.body = rs
 })
 
 module.exports = router;

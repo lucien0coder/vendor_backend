@@ -8,10 +8,10 @@ const LookingModel = require('../models/Looking').Model,
    * @param:local
    * @return:Looking
    * */
-const listLookingByLocalAndCondition = async (local, condition)=>{
+const listLookingByLocalAndCondition = async (condition)=>{
   utils.cons('info','listLookingByLocalAndCondition')
   //如果两参数都为空，则查找前20条
-  let conditions = Object.assign(local, condition) || {}
+  let conditions = condition || {}
   let r = 1
   try{
     await LookingModel.find(conditions,null,{limit:20} (err, rs)=>{

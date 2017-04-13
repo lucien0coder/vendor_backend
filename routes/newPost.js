@@ -1,4 +1,6 @@
-var router = require('koa-router')();
+let router = require('koa-router')();
+const sLooking = require('../services/ser_looking'),
+  utils = require('../utils/utils')
 
 /**
  * 3.1 POST /post/LOOKING
@@ -6,7 +8,11 @@ var router = require('koa-router')();
    * return:0/1/2
  */
 router.post('/looking', async(ctx, next)=>{
-
+    let looking = ctx.request.body || {}
+    let rs = await sLooking.saveLooking(looking)
+    ctx.type = 'application/json'
+    ctx.state = (rs == 2 && '500') || '200'
+    ctx.body = rs
 })
 
 /**
