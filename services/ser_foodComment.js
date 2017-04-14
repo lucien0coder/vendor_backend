@@ -9,13 +9,13 @@ const FoodCommentEntity = require('../models/FoodComment').Model,
  * @param:local;
  * @return:FoodCommentList
  */
-const listFoodCommentByLocalAndCondition = async (condition)=>{
+const listFoodCommentByLocalAndCondition = async (local)=>{
   utils.cons('info', 'listFoodCommentByLocalAndCondition')
-  let conditions = condition || ''
+  let locals = local || ''
   let r = 1
-  if(conditions.date){
+  if(locals){
     try{
-      await FoodCommentEntity.find(conditions, (err,rs)=>{
+      await FoodCommentEntity.find({local:locals}, (err,rs)=>{
         if(err) throw err
         r = rs
       })
@@ -96,11 +96,10 @@ const listFCComment = async (foodCommentID)=>{
   utils.cons('info', 'listFCComment')
   let r = 1
   if(foodCommentID){
-    let filed = {'imgs':[]}
     try{
-      await FoodCommentEntity.findByID(foodCommentID, filed, (err, rs)=>{
+      await FoodCommentEntity.findByID(foodCommentID, (err, rs)=>{
         if(err) throw err
-        r = rs.imgs
+        r = rs
       })
     }catch(err){
       utils.cons('err', 'listFCComment')
@@ -111,23 +110,27 @@ const listFCComment = async (foodCommentID)=>{
   return r
 }
 
-/** 1.9 GET /foodComment/#socialID
- * @param:socialID
- * @return:0/1/2
- * direct to「食评详情」页
- * */
-const foodCommentDetails = async (socialID)=>{
-  utils.cons('info', 'foodCommentDetails')
-
-}
-
 /** 3.2 POST /postFoodComment/FOODCOMMENT
  * @param:FOODCOMMENT
  * @return:0/1/2
  */
 const saveFoodComment = async (foodComment)=>{
   utils.cons('info', 'saveFoodComment')
-
+  let r = 1
+  if(foodComment.date){
+    let new_fc = new FoodCommentEntity(foodComment)
+    try{
+      await new_fc.save((err, rs)=>{
+        if(err) throw err
+        r = 0
+      })
+    }catch(err){
+      utils.cons('err', 'saveFoodComment err: '+err)
+      r = 2
+      throw err
+    }
+  }
+  return r
 }
 
 module.exports = {
@@ -135,6 +138,5 @@ module.exports = {
   ListUserCollectionAndCondition: listUserCollectionAndCondition,
   ViewFoodCommentImg: viewFoodCommentImg,
   ListFCComment: listFCComment,
-  FoodCommentDetails: foodCommentDetails,
   SaveFoodComment: saveFoodComment
 }
