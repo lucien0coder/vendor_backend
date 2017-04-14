@@ -14,7 +14,7 @@ const listLookingByLocalAndCondition = async (condition)=>{
   let conditions = condition || {}
   let r = 1
   try{
-    await LookingModel.find(conditions,null,{limit:20} (err, rs)=>{
+    await LookingModel.find(conditions,null,{limit:20}, (err, rs)=>{
       if(err) throw err
       r = rs
     })
@@ -35,7 +35,7 @@ const lookingDetails = async (socialID)=>{
   let sid = socialID || ''
   let r = 1
   try{
-    await LookingModel.findOne(sid, (err, rs)=>{
+    await LookingModel.findById(sid, (err, rs)=>{
       if(err) throw err
       r = rs
     })
@@ -77,24 +77,26 @@ const saveLooking = async (looking) =>{
  * */
 const addVendor = async (socialID, user)=>{
   utils.cons('info', 'addVendor')
-  let condition = {_id:socialID}
+  let ID = socialID || ''
   let rs = 1
-  try{
-    await LookingModel.findOne(condition, (err, rs)=>{
-      if(err) throw err
-      let addingUser = {ua: user}
-      let thisVendor = rs.answers
-      thisVendor.assign(addingUser)
-      utils.cons('info', 'addVendor findOne success')
-      LookingModel.update(condition, ($set,thisVendor),(err, rs)=>{
+  if(ID){
+    try{
+      await LookingModel.findById(ID, (err, rs)=>{
         if(err) throw err
-        if(rs.ok == 1) r = 0
+        let addingUser = {ua: user}
+        let thisVendor = rs.answers
+        thisVendor.assign(addingUser)
+        utils.cons('info', 'addVendor findOne success')
+        LookingModel.update(condition, ($set,thisVendor),(err, rs)=>{
+          if(err) throw err
+          if(rs.ok == 1) r = 0
+        })
       })
-    })
-  }catch(err){
-    utils.cons('err', 'addVendor err: '+err)
-    r = 2
-    throw err
+    }catch(err){
+      utils.cons('err', 'addVendor err: '+err)
+      r = 2
+      throw err
+    }
   }
   return r
 }

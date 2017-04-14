@@ -39,9 +39,8 @@ const shopinfo = async (shopid)=>{
   let psid = shopid || ''
   let r = 1
   if(psid){
-    let condition = {_id:psid}
     try{
-      await ShopModel.findOne(condition,(err, rs)=>{
+      await ShopModel.findById(psid,(err, rs)=>{
         if(err) throw err
         r = rs
       })

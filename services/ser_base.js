@@ -35,11 +35,13 @@ const saveLike = async(userid, socialID)=>{
 }
 
 /** 1.12 GET /collect/#socialID
- * @param:socialID;user
+ * @param:socialID 
+ * @param:userid 
+ * @param:type  店铺、美食家、食评、
  * @return:0/1/2
  */
-const saveCollect = async(userid, socialID)=>{
-
+const saveCollect = async(userid, type, socialID)=>{
+  //
 }
 
 /** 1.13 GET /listLike/#socialID

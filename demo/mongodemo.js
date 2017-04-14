@@ -86,8 +86,13 @@ let ford = new Looking({
     make: 'Ford',
     route: 33,
     vendoer:[
-        {user:'lucien'},
-        {user:'Jennifer'}
+        {user:'Sure', type:'family'},
+        {user:'Ttida', type:'family'},
+        {user:'lucien', type:'me'},
+        {user:'Jennifer', type:'family'},
+        {user:'jazzkid', type:'friend'},
+        {user:'mcc', type:'mate'}
+
     ]
 })
 // ford.save()
@@ -97,12 +102,23 @@ let ford = new Looking({
 //     console.log(socials[0])
 //     console.log(socials[1])
 // })
-let qu = Looking.findOne({_id:'58eecdc69e176c25e4974bd9'},(err, rs)=>{
+// let condition = {_id:'58eecdc69e176c25e4974bd9'}
+let condition = {_id:'58eecdc69e176c25e4974bd9'}
+let cons = {
+    make:{
+        $in:['Honda','Ford']
+}}
+let field = {'vendoer':[]}
+let qu = Looking.find(cons, (err, rs)=>{
+    console.log(rs)
     if(err){
 
     }else{
-        console.log(rs.vendoer)
-        console.log(typeof(rs.vendoer))
+        let vendorarr = rs.vendoer
+        console.log(vendorarr)
+        var arr = vendorarr.filter(user=> user.type == 'family').map(user=> user.user)
+        console.log(arr)
+        // console.log(typeof(rs.vendoer))
         // rs.forEach((r, index)=>{
             // console.log(r)
         // })
@@ -113,10 +129,15 @@ let qu = Looking.findOne({_id:'58eecdc69e176c25e4974bd9'},(err, rs)=>{
 // Looking.findOne(condition, (err, rs)=>{
 //     if(!err){
 //         console.log(rs)
-//         let addingUser = {name:'Ttida'}
-//         let vend = rs.vendoer
-//         vend.push(addingUser)
-//         let update = {$set: {vendoer:vend}}
+//         let addingUser =  [{user:'Sure', type:'family'},
+//         {user:'Ttida', type:'family'},
+//         {user:'lucien', type:'me'},
+//         {user:'Jennifer', type:'family'},
+//         {user:'jazzkid', type:'friend'},
+//         {user:'mcc', type:'mate'}]
+//         // let vend = rs.vendoer
+//         // vend.push(addingUser)
+//         let update = {$set: {vendoer:addingUser}}
 //         Looking.update(condition, update, (err, rs)=>{
 //             console.log(rs)
 //         })
