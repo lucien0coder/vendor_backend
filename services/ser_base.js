@@ -1,7 +1,8 @@
 /**
  * 基本的功能模块
  */
-const BaseModel = require('../models/Base').Model
+const BaseModel = require('../models/Base').Model,
+  utils = require('../utils/utils')
  
 /** 1.1 GET /getLocation
  * @param:gps 
@@ -23,7 +24,20 @@ const selectLocation = async()=>{
  * @return:0/1/2
  */
 const saveComment = async(comment, socialID, userid)=>{
-
+  let sid = socialID || ''
+  let uid = userid || ''
+  let r = 1
+  if(sid && uid){
+    let update = {$push:{ userid: comment }}
+    try{
+      BaseModel.update(condition, update, (err, rs)=>{})
+    }catch(err){
+      utils.cons('err', 'saveComment err: '+err)
+      r = 2
+      throw err
+    }
+  }
+  return r
 }
 
 /** 1.11 GET /like/#socialID

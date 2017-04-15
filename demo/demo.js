@@ -27,9 +27,9 @@
 //     if (err) throw err;
 //   });
 
-let a = {date:Date.now()}
-if(a.date) console.log('get a ')
-else console.log('true')
+// let a = {date:Date.now()}
+// if(a.date) console.log('get a ')
+// else console.log('true')
 
 // const foo = (params)=>{
 //     return params *2
@@ -46,3 +46,11 @@ else console.log('true')
 // let d = Object.assign(a,b,c)
 
 // console.log(d)
+
+let a = 1
+let b = 2
+if(a && b){
+    console.log('yes')
+}else{
+    console.log('no')
+}

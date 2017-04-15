@@ -102,22 +102,20 @@ let ford = new Looking({
 //     console.log(socials[0])
 //     console.log(socials[1])
 // })
-// let condition = {_id:'58eecdc69e176c25e4974bd9'}
 let condition = {_id:'58eecdc69e176c25e4974bd9'}
 let cons = {
     make:{
         $in:['Honda','Ford']
 }}
 let field = {'vendoer':[]}
-let qu = Looking.find(cons, (err, rs)=>{
+let qu = Looking.findOne(condition, (err, rs)=>{
     console.log(rs)
     if(err){
 
     }else{
-        let vendorarr = rs.vendoer
-        console.log(vendorarr)
-        var arr = vendorarr.filter(user=> user.type == 'family').map(user=> user.user)
-        console.log(arr)
+        console.log(rs.vendoer)
+        // var arr = vendorarr.filter(user=> user.type == 'family').map(user=> user.user)
+        // console.log(arr)
         // console.log(typeof(rs.vendoer))
         // rs.forEach((r, index)=>{
             // console.log(r)
@@ -142,5 +140,11 @@ let qu = Looking.find(cons, (err, rs)=>{
 //             console.log(rs)
 //         })
 //     }
+// })
+
+// let condition = {make: 'Ford'}
+// let update = {$push: {vendoer:{user:'jay', type:'friend'} }}
+// Looking.update(condition, update, (err ,rs)=>{
+//     if(err) console.log(err)
 // })
 
