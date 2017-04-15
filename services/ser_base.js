@@ -24,13 +24,17 @@ const selectLocation = async()=>{
  * @return:0/1/2
  */
 const saveComment = async(comment, socialID, userid)=>{
+  utils.cons('info', 'saveComment')
   let sid = socialID || ''
   let uid = userid || ''
   let r = 1
   if(sid && uid){
-    let update = {$push:{ userid: comment }}
+    let update = {$push:{ comments:{userid: comment} }}
     try{
-      BaseModel.update(condition, update, (err, rs)=>{})
+      await BaseModel.update(condition, update, (err, rs)=>{
+        if(err) throw err
+        if(rs.ok == 1) r = 0
+      })
     }catch(err){
       utils.cons('err', 'saveComment err: '+err)
       r = 2
@@ -45,17 +49,24 @@ const saveComment = async(comment, socialID, userid)=>{
  * @return:0/1/2
  */
 const saveLike = async(userid, socialID)=>{
-
-}
-
-/** 1.12 GET /collect/#socialID
- * @param:socialID 
- * @param:userid 
- * @param:type  店铺、美食家、食评、
- * @return:0/1/2
- */
-const saveCollect = async(userid, type, socialID)=>{
-  //
+  utils.cons('info', 'saveLike')
+  let sid = socialID || ''
+  let uid = userid || ''
+  let r = 1
+  if(sid && uid){
+    let update = {$push:{ likes:{userid} }}
+    try{
+      await BaseModel.update(condition, update, (err, rs)=>{
+        if(err) throw err
+        if(rs.ok == 1) r = 0
+      })
+    }catch(err){
+      utils.cons('err', 'saveLike err: '+err)
+      r = 2
+      throw err
+    }
+  }
+  return r
 }
 
 /** 1.13 GET /listLike/#socialID
@@ -63,7 +74,23 @@ const saveCollect = async(userid, type, socialID)=>{
  * @return:likeList
  */
 const listLike = async(socialID)=>{
-
+  utils.cons('info', 'listLike')
+  let r = 1
+  let sid = socialID || ''
+  if(sid){
+    let filed = {likes:[]}
+    try{
+      await BaseModel.findById(sid, filed, (err, rs)=>{
+        if(err) throw err
+        r = rs.likes
+      })
+    }catch(err){
+      utils.cons('info', 'listLike err: '+err)
+      r = 2
+      throw err
+    }
+  }
+  return r
 }
 
 /** 1.14 GET /listComment/#socialID
@@ -71,13 +98,28 @@ const listLike = async(socialID)=>{
  * @return:commentList
  */ 
 const listComment = async(socialID)=>{
-
+  utils.cons('info', 'listComment')
+  let r = 1
+  let sid = socialID || ''
+  if(sid){
+    let filed = {comments:[]}
+    try{
+      await BaseModel.findById(sid, filed, (err, rs)=>{
+        if(err) throw err
+        r = rs.comments
+      })
+    }catch(err){
+      utils.cons('info', 'listComment err: '+err)
+      r = 2
+      throw err
+    }
+  }
+  return r
 }
 
 module.exports = {
   SaveComment: saveComment,
   SaveLike: saveLike,
-  SaveCollect: saveCollect,
   ListLike: listLike,
   ListComment: listComment
 }

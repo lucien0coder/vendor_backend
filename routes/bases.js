@@ -1,4 +1,5 @@
-var router = require('koa-router')();
+let router = require('koa-router')();
+  const sBase = require('../services/ser_base')
 
 /**
  * 通过基本体的socialID 获取基本体的like属性列表
@@ -6,8 +7,14 @@ var router = require('koa-router')();
  * @param:socialID
  * @return:likeList
  */
-router.get('/like', async(ctx, next)=>{
-
+router.get('/like/:socialID', async(ctx, next)=>{
+  let socialID = ctx.params.socialID || ''
+  if(socialID){
+    rs = await sBase.ListLike(socialID)
+  }
+  ctx.type = 'application/json'
+  ctx.state = (rs == 2 && '500') || '200'
+  ctx.body = rs
 })
 
 /**
@@ -17,7 +24,13 @@ router.get('/like', async(ctx, next)=>{
   * @return:commentList
   */
 router.get('/comment', async(ctx, next)=>{
-
+  let socialID = ctx.params.socialID || ''
+  if(socialID){
+    rs = await sBase.ListComment(socialID)
+  }
+  ctx.type = 'application/json'
+  ctx.state = (rs == 2 && '500') || '200'
+  ctx.body = rs
 })
 
 module.exports = router;

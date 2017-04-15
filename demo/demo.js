@@ -47,9 +47,10 @@
 
 // console.log(d)
 
-let a = 1
-let b = 2
-if(a && b){
+let a = ''
+let b = ''
+let c = 1
+if(a && b && c){
     console.log('yes')
 }else{
     console.log('no')

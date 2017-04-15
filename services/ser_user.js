@@ -195,6 +195,33 @@ const UserModel = require('../models/User').Model,
     return this.userinfo(useraccount)
   }
 
+  /** 1.12 GET /collect/#socialID
+ * @param:socialID 
+ * @param:userid 
+ * @param:type  店铺、美食家、食评、
+ * @return:0/1/2
+ */
+const saveCollect = async(userid, type, socialID)=>{
+  utils.cons('info', 'saveCollect')
+  let sid = socialID || ''
+  let uid = userid || ''
+  let r = 1
+  if(sid && uid){
+    let update = {$push:{ my_collections:{userid} }}
+    try{
+      UserModel.update(condition, update, (err, rs)=>{
+        if(err) throw err
+        if(rs.ok == 1) r = 0
+      })
+    }catch(err){
+      utils.cons('err', 'saveCollect err: '+err)
+      r = 2
+      throw err
+    }
+  }
+  return r
+}
+
   module.exports = {
     listMyFC:listMyFC,
     listMyLooking:listMyLooking,
@@ -203,5 +230,6 @@ const UserModel = require('../models/User').Model,
     myCollection:myCollection,
     updateMyInfo:updateMyInfo,
     userinfo:userinfo,
-    myInfo:myInfo
+    myInfo:myInfo,
+    addCollection: saveCollect
   }
