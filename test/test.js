@@ -33,7 +33,9 @@ describe('SERVICE - SIGN',()=>{
 describe('SERVICE - USER',()=>{
     describe('#Userinfo()', ()=>{
         it('find userinfo without err', async()=>{
-
+ let a = await sign_service.Signin('jennifer', 'chenwutong')
+            assert.typeOf(a, 'Number')
+            assert.equal(a, 0)
         })
     })
 })
@@ -41,7 +43,9 @@ describe('SERVICE - USER',()=>{
 describe('SERVICE - SHOP',()=>{
     describe('#Userinfo()', ()=>{
         it('find userinfo without err', async()=>{
-            
+             let a = await sign_service.Signin('jennifer', 'chenwutong')
+            assert.typeOf(a, 'Number')
+            assert.equal(a, 0)
         })
     })
 })
@@ -49,7 +53,9 @@ describe('SERVICE - SHOP',()=>{
 describe('SERVICE - LOOKING',()=>{
     describe('#Userinfo()', ()=>{
         it('find userinfo without err', async()=>{
-            
+             let a = await sign_service.Signin('jennifer', 'chenwutong')
+            assert.typeOf(a, 'Number')
+            assert.equal(a, 0)
         })
     })
 })
@@ -57,7 +63,9 @@ describe('SERVICE - LOOKING',()=>{
 describe('SERVICE - FOODCOMMENT',()=>{
     describe('#Userinfo()', ()=>{
         it('find userinfo without err', async()=>{
-            
+             let a = await sign_service.Signin('jennifer', 'chenwutong')
+            assert.typeOf(a, 'Number')
+            assert.equal(a, 0)
         })
     })
 })
@@ -65,7 +73,9 @@ describe('SERVICE - FOODCOMMENT',()=>{
 describe('SERVICE - BASE',()=>{
     describe('#Userinfo()', ()=>{
         it('find userinfo without err', async()=>{
-            
+             let a = await sign_service.Signin('jennifer', 'chenwutong')
+            assert.typeOf(a, 'Number')
+            assert.equal(a, 0)
         })
     })
 })
