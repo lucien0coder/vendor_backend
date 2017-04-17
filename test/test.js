@@ -33,7 +33,7 @@ describe('SERVICE - SIGN',()=>{
 describe('SERVICE - USER',()=>{
     describe('#Userinfo()', ()=>{
         it('find userinfo without err', async()=>{
- let a = await sign_service.Signin('jennifer', 'chenwutong')
+            let a = await user_service.userinfo('lucien')
             assert.typeOf(a, 'Number')
             assert.equal(a, 0)
         })
