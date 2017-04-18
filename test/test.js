@@ -1,9 +1,14 @@
 const sign_service = require('../services/ser_signinAndUp'),
-    user_service = require('../services/ser_user')
-const request = require('supertest-koa-agent');
-const app = require('../app');
-const assert = require('chai').assert
+    user_service = require('../services/ser_user'),
+    shop_service = require('../services/ser_shop'),
+    looking_service = require('../services/ser_looking'),
+    foodcomment_service = require('../services/ser_foodComment'),
+    base_service = require('../services/ser_base'),
+    request = require('supertest-koa-agent'),
+    assert = require('chai').assert,
+    app = require('../app')
 
+//-----------------------------------------------SIGN -- service ----------------------------
 describe('SERVICE - SIGN',()=>{
     describe('#FindUser()',()=>{
         it('finduser without err', async ()=>{
@@ -30,6 +35,7 @@ describe('SERVICE - SIGN',()=>{
     ])
 })
 
+//-----------------------------------------------USER -- service ----------------------------
 describe('SERVICE - USER',()=>{
     describe('#Userinfo()', ()=>{
         it('find userinfo without err', async()=>{
@@ -38,48 +44,205 @@ describe('SERVICE - USER',()=>{
             assert.equal(a, 0)
         })
     })
+
+     describe('#updateMyInfo()', ()=>{
+        it('find updateMyInfo without err', async()=>{
+            let a = await user_service.updateMyInfo('lucien')
+            assert.typeOf(a, 'Number')
+            assert.equal(a, 0)
+        })
+    })
+
+     describe('#myInfo()', ()=>{
+        it('find myInfo without err', async()=>{
+            let a = await user_service.myInfo('lucien')
+            assert.typeOf(a, 'Number')
+            assert.equal(a, 0)
+        })
+    })
+
+     describe('#myCollection()', ()=>{
+        it('find myCollection without err', async()=>{
+            let a = await user_service.myCollection('lucien')
+            assert.typeOf(a, 'Number')
+            assert.equal(a, 0)
+        })
+    })
+
+     describe('#listMyPC()', ()=>{
+        it('find listMyPC without err', async()=>{
+            let a = await user_service.listMyPC('lucien')
+            assert.typeOf(a, 'Number')
+            assert.equal(a, 0)
+        })
+    })
+
+    describe('#listMyLooking()', ()=>{
+        it('find listMyLooking without err', async()=>{
+            let a = await user_service.listMyLooking('lucien')
+            assert.typeOf(a, 'Number')
+            assert.equal(a, 0)
+        })
+    })
+
+    describe('#listMyLike()', ()=>{
+        it('find listMyLike without err', async()=>{
+            let a = await user_service.listMyLike('lucien')
+            assert.typeOf(a, 'Number')
+            assert.equal(a, 0)
+        })
+    })
+
+    describe('#listMyFC()', ()=>{
+        it('find listMyFC without err', async()=>{
+            let a = await user_service.listMyFC('lucien')
+            assert.typeOf(a, 'Number')
+            assert.equal(a, 0)
+        })
+    })
+
+    describe('#addCollection()', ()=>{
+        it('find addCollection without err', async()=>{
+            let a = await user_service.addCollection('lucien')
+            assert.typeOf(a, 'Number')
+            assert.equal(a, 0)
+        })
+    })
 })
 
+//-----------------------------------------------SHOP -- service ----------------------------
 describe('SERVICE - SHOP',()=>{
-    describe('#Userinfo()', ()=>{
-        it('find userinfo without err', async()=>{
-             let a = await sign_service.Signin('jennifer', 'chenwutong')
+    describe('#SaveInviting()', ()=>{
+        it('find SaveInviting without err', async()=>{
+             let a = await shop_service.SaveInviting('jennifer', 'chenwutong')
+            assert.typeOf(a, 'Number')
+            assert.equal(a, 0)
+        })
+    })
+
+     describe('#Shopinfo()', ()=>{
+        it('find Shopinfo without err', async()=>{
+             let a = await shop_service.Shopinfo('jennifer', 'chenwutong')
             assert.typeOf(a, 'Number')
             assert.equal(a, 0)
         })
     })
 })
 
+//-----------------------------------------------LOOKING -- service ----------------------------
 describe('SERVICE - LOOKING',()=>{
-    describe('#Userinfo()', ()=>{
-        it('find userinfo without err', async()=>{
-             let a = await sign_service.Signin('jennifer', 'chenwutong')
+    describe('#SaveLooking()', ()=>{
+        it('find SaveLooking without err', async()=>{
+            let a = await looking_service.SaveLooking('jennifer', 'chenwutong')
+            assert.typeOf(a, 'Number')
+            assert.equal(a, 0)
+        })
+    })
+
+     describe('#LookingDetails()', ()=>{
+        it('find LookingDetails without err', async()=>{
+            let a = await looking_service.LookingDetails('jennifer', 'chenwutong')
+            assert.typeOf(a, 'Number')
+            assert.equal(a, 0)
+        })
+    })
+
+     describe('#ListLookingByLocalAndCondition()', ()=>{
+        it('find ListLookingByLocalAndCondition without err', async()=>{
+            let a = await looking_service.ListLookingByLocalAndCondition('jennifer', 'chenwutong')
+            assert.typeOf(a, 'Number')
+            assert.equal(a, 0)
+        })
+    })
+
+     describe('#AddVendor()', ()=>{
+        it('find AddVendor without err', async()=>{
+            let a = await looking_service.AddVendor('jennifer', 'chenwutong')
             assert.typeOf(a, 'Number')
             assert.equal(a, 0)
         })
     })
 })
 
+//-----------------------------------------------FOODCOMMENT -- service ----------------------------
 describe('SERVICE - FOODCOMMENT',()=>{
-    describe('#Userinfo()', ()=>{
-        it('find userinfo without err', async()=>{
-             let a = await sign_service.Signin('jennifer', 'chenwutong')
+    describe('#ViewFoodCommentImg()', ()=>{
+        it('find ViewFoodCommentImg without err', async()=>{
+             let a = await foodcomment_service.ViewFoodCommentImg('jennifer', 'chenwutong')
+            assert.typeOf(a, 'Number')
+            assert.equal(a, 0)
+        })
+    })
+
+    describe('#SaveFoodComment()', ()=>{
+        it('find SaveFoodComment without err', async()=>{
+             let a = await foodcomment_service.SaveFoodComment('jennifer', 'chenwutong')
+            assert.typeOf(a, 'Number')
+            assert.equal(a, 0)
+        })
+    })
+
+    describe('#ListUserCollectionAndCondition()', ()=>{
+        it('find ListUserCollectionAndCondition without err', async()=>{
+             let a = await foodcomment_service.ListUserCollectionAndCondition('jennifer', 'chenwutong')
+            assert.typeOf(a, 'Number')
+            assert.equal(a, 0)
+        })
+    })
+
+    describe('#ListFoodCommentByLocalAndCondition()', ()=>{
+        it('find ListFoodCommentByLocalAndCondition without err', async()=>{
+             let a = await foodcomment_service.ListFoodCommentByLocalAndCondition('jennifer', 'chenwutong')
+            assert.typeOf(a, 'Number')
+            assert.equal(a, 0)
+        })
+    })
+
+    describe('#ListFCComment()', ()=>{
+        it('find ListFCComment without err', async()=>{
+             let a = await foodcomment_service.ListFCComment('jennifer', 'chenwutong')
             assert.typeOf(a, 'Number')
             assert.equal(a, 0)
         })
     })
 })
 
+//-----------------------------------------------BASE -- service ----------------------------
 describe('SERVICE - BASE',()=>{
-    describe('#Userinfo()', ()=>{
-        it('find userinfo without err', async()=>{
-             let a = await sign_service.Signin('jennifer', 'chenwutong')
+    describe('#ListComment()', ()=>{
+        it('find ListComment without err', async()=>{
+             let a = await base_service.ListComment('jennifer', 'chenwutong')
+            assert.typeOf(a, 'Number')
+            assert.equal(a, 0)
+        })
+    })
+
+    describe('#ListLike()', ()=>{
+        it('find ListLike without err', async()=>{
+             let a = await base_service.ListLike('jennifer', 'chenwutong')
+            assert.typeOf(a, 'Number')
+            assert.equal(a, 0)
+        })
+    })
+
+    describe('#SaveComment()', ()=>{
+        it('find SaveComment without err', async()=>{
+             let a = await base_service.SaveComment('jennifer', 'chenwutong')
+            assert.typeOf(a, 'Number')
+            assert.equal(a, 0)
+        })
+    })
+
+    describe('#SaveLike()', ()=>{
+        it('find SaveLike without err', async()=>{
+             let a = await base_service.SaveLike('jennifer', 'chenwutong')
             assert.typeOf(a, 'Number')
             assert.equal(a, 0)
         })
     })
 })
 
+//-----------------------------------------------SIGN -- route ----------------------------
 describe('ROUTE - SIGN', ()=>{
     describe('#',()=>{
         it('', async()=>{
@@ -101,6 +264,5 @@ describe('ROUTE - SIGN', ()=>{
     })
     // describe('#')
 })
-/*
 
-*/
+//-----------------------------------------------SIGN -- route ----------------------------
