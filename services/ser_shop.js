@@ -55,5 +55,5 @@ const shopinfo = async (shopid)=>{
 
 module.exports = {
   SaveInviting : saveInviting,
-  Shopinfo : shopid
+  Shopinfo : shopinfo
 }

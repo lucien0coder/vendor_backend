@@ -23,7 +23,7 @@ router.get('/like/:socialID', async(ctx, next)=>{
   * @param:socialID
   * @return:commentList
   */
-router.get('/comment', async(ctx, next)=>{
+router.get('/comment/:socialID', async(ctx, next)=>{
   let socialID = ctx.params.socialID || ''
   if(socialID){
     rs = await sBase.ListComment(socialID)

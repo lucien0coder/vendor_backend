@@ -2,11 +2,6 @@ const router = require('koa-router')(),
   uService = require('../services/ser_user'),
   utils = require('../utils/utils')
 
-
-router.get('/', function (ctx, next) {
-  ctx.body = 'this a users response!';
-});
-
 /**
  * 1.8 GET /user/useraccount
    * @param:useraccount
@@ -35,7 +30,7 @@ router.get('/collection/:useraccount', async(ctx, next)=>{
 })
 
 /**
- *  5.3 PUT /users/update
+ *  5.3 PUT /user/update
    * @param:USER
    * @return:0/1/2
  */

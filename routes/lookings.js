@@ -10,7 +10,7 @@ const sLooking = require('../services/ser_looking'),
    */ 
 router.get('/', async(ctx, next)=>{
     let params = ctx.request.body || {}
-    let lookingList = await sLooking.listLookingByLocalAndCondition(params)
+    let lookingList = await sLooking.ListLookingByLocalAndCondition(params)
     ctx.type = 'application/json'
     ctx.state = (lookingList == 2 && '500') || '200'
     ctx.body = lookingList
@@ -24,7 +24,7 @@ router.get('/', async(ctx, next)=>{
  */
 router.get('/:socialID', async(ctx, next)=>{
     let sid = ctx.params.socialID || {}
-    let looking = await sLooking.lookingDetails(sid)
+    let looking = await sLooking.LookingDetails(sid)
     ctx.type = 'application/json'
     ctx.state = (looking == 2 && '500') || '200'
     ctx.body = looking
@@ -40,7 +40,7 @@ router.post('/beAVendor', async(ctx, next)=>{
     let params = ctx.request.body || {}
     let socialID = params.sid || ''
     let user = params.user || {}
-    let rs = await sLooking.addVendor(socialID, user)
+    let rs = await sLooking.AddVendor(socialID, user)
     ctx.type = 'application/json'
     ctx.state = (rs == 2 && '500') || '200'
     ctx.body = rs

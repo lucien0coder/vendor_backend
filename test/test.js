@@ -168,7 +168,7 @@ describe('SERVICE - LOOKING',()=>{
 describe('SERVICE - FOODCOMMENT',()=>{
     describe('#ViewFoodCommentImg()', ()=>{
         it('find ViewFoodCommentImg without err', async()=>{
-             let a = await foodcomment_service.ViewFoodCommentImg('jennifer', 'chenwutong')
+            let a = await foodcomment_service.ViewFoodCommentImg('jennifer', 'chenwutong')
             assert.typeOf(a, 'Number')
             assert.equal(a, 0)
         })
@@ -176,7 +176,7 @@ describe('SERVICE - FOODCOMMENT',()=>{
 
     describe('#SaveFoodComment()', ()=>{
         it('find SaveFoodComment without err', async()=>{
-             let a = await foodcomment_service.SaveFoodComment('jennifer', 'chenwutong')
+            let a = await foodcomment_service.SaveFoodComment('jennifer', 'chenwutong')
             assert.typeOf(a, 'Number')
             assert.equal(a, 0)
         })
@@ -184,7 +184,7 @@ describe('SERVICE - FOODCOMMENT',()=>{
 
     describe('#ListUserCollectionAndCondition()', ()=>{
         it('find ListUserCollectionAndCondition without err', async()=>{
-             let a = await foodcomment_service.ListUserCollectionAndCondition('jennifer', 'chenwutong')
+            let a = await foodcomment_service.ListUserCollectionAndCondition('jennifer', 'chenwutong')
             assert.typeOf(a, 'Number')
             assert.equal(a, 0)
         })
@@ -192,7 +192,7 @@ describe('SERVICE - FOODCOMMENT',()=>{
 
     describe('#ListFoodCommentByLocalAndCondition()', ()=>{
         it('find ListFoodCommentByLocalAndCondition without err', async()=>{
-             let a = await foodcomment_service.ListFoodCommentByLocalAndCondition('jennifer', 'chenwutong')
+            let a = await foodcomment_service.ListFoodCommentByLocalAndCondition('jennifer', 'chenwutong')
             assert.typeOf(a, 'Number')
             assert.equal(a, 0)
         })
@@ -200,7 +200,7 @@ describe('SERVICE - FOODCOMMENT',()=>{
 
     describe('#ListFCComment()', ()=>{
         it('find ListFCComment without err', async()=>{
-             let a = await foodcomment_service.ListFCComment('jennifer', 'chenwutong')
+            let a = await foodcomment_service.ListFCComment('jennifer', 'chenwutong')
             assert.typeOf(a, 'Number')
             assert.equal(a, 0)
         })
@@ -211,7 +211,7 @@ describe('SERVICE - FOODCOMMENT',()=>{
 describe('SERVICE - BASE',()=>{
     describe('#ListComment()', ()=>{
         it('find ListComment without err', async()=>{
-             let a = await base_service.ListComment('jennifer', 'chenwutong')
+            let a = await base_service.ListComment('jennifer', 'chenwutong')
             assert.typeOf(a, 'Number')
             assert.equal(a, 0)
         })
@@ -219,7 +219,7 @@ describe('SERVICE - BASE',()=>{
 
     describe('#ListLike()', ()=>{
         it('find ListLike without err', async()=>{
-             let a = await base_service.ListLike('jennifer', 'chenwutong')
+            let a = await base_service.ListLike('jennifer', 'chenwutong')
             assert.typeOf(a, 'Number')
             assert.equal(a, 0)
         })
@@ -227,7 +227,7 @@ describe('SERVICE - BASE',()=>{
 
     describe('#SaveComment()', ()=>{
         it('find SaveComment without err', async()=>{
-             let a = await base_service.SaveComment('jennifer', 'chenwutong')
+            let a = await base_service.SaveComment('jennifer', 'chenwutong')
             assert.typeOf(a, 'Number')
             assert.equal(a, 0)
         })
@@ -235,7 +235,7 @@ describe('SERVICE - BASE',()=>{
 
     describe('#SaveLike()', ()=>{
         it('find SaveLike without err', async()=>{
-             let a = await base_service.SaveLike('jennifer', 'chenwutong')
+            let a = await base_service.SaveLike('jennifer', 'chenwutong')
             assert.typeOf(a, 'Number')
             assert.equal(a, 0)
         })
@@ -244,25 +244,299 @@ describe('SERVICE - BASE',()=>{
 
 //-----------------------------------------------SIGN -- route ----------------------------
 describe('ROUTE - SIGN', ()=>{
-    describe('#',()=>{
-        it('', async()=>{
+    describe('#/sign/in',()=>{
+        it('user sign in without err', async()=>{
             request(app)
-                .post('/sign/up')
-                // .get('/user/lucien')
+                .post('/sign/in')
                 .send({
                     useraccount:'jennifer',
                     password:'221'
                 })
                 .expect('Content-Type', /json/)
-                //   .expect('Content-Length', '15')
                 .expect(200)
-                .end(function(err, res) {
+                .end((err, res)=>{
+                    if (err) throw err
                     console.log(res)
-                    if (err) throw err;
                 });
         })
     })
-    // describe('#')
+
+    describe('#/sign/up',()=>{
+        it('user sign up without err', async()=>{
+            request(app)
+                .post('/sign/up')
+                .send({
+                    useraccount:'jennifer',
+                    password:'221'
+                })
+                .expect('Content-Type',/json/)
+                .expect(200)
+                .end((err, res)=>{
+                    if(err) throw err
+                    console.log(res)
+                })
+        })
+    })
 })
 
 //-----------------------------------------------SIGN -- route ----------------------------
+describe('#user-route', ()=>{
+    describe('#/user/useraccoun', ()=>{
+        it('get user by useraccount without err', async()=>{
+            request(app)
+                .get('/user/lucien')
+                .expect('Content-Type',/json/)
+                .expect(200)
+                .end((err, res)=>{
+                    if(err) throw err
+                    console.log(res)
+                })
+        } )
+    })
+
+    describe('#/collection/useraccount', ()=>{
+        it('get user collection by useraccount without err', async()=>{
+            request(app)
+                .get('/user/lucien')
+                .expect('Content-Type',/json/)
+                .expect(200)
+                .end((err, res)=>{
+                    if(err) throw err
+                    console.log(res)
+                })
+        } )
+    })
+
+    describe('#/user/update', ()=>{
+        it('put user update without err', async()=>{
+            request(app)
+                .put('/user/updatet')
+                .send({
+                    useraccount:'jennifer',
+                    password:'221'
+                })
+                .expect('Content-Type',/json/)
+                .expect(200)
+                .end((err, res)=>{
+                    if(err) throw err
+                    console.log(res)
+                })
+        } )
+    })
+})
+
+//-----------------------------------------------TRACK -- route ----------------------------
+describe('#/track-route', ()=>{
+    describe('#/track/foodcomment/#useraccount', ()=>{
+        it('get user by useraccount without err', async()=>{
+            request(app)
+                .get('/user/lucien')
+                .expect('Content-Type',/json/)
+                .expect(200)
+                .end((err, res)=>{
+                    if(err) throw err
+                    console.log(res)
+                })
+        } )
+    })
+
+    describe('#/track/looking/useraccount', ()=>{
+        it('get user collection by useraccount without err', async()=>{
+            request(app)
+                .get('/track/looking/lucien')
+                .expect('Content-Type',/json/)
+                .expect(200)
+                .end((err, res)=>{
+                    if(err) throw err
+                    console.log(res)
+                })
+        } )
+    })
+
+    describe('#/track/postcomment/#userid', ()=>{
+        it('put user update without err', async()=>{
+            request(app)
+                .get('/track/postcomment/lucien')
+                .expect('Content-Type',/json/)
+                .expect(200)
+                .end((err, res)=>{
+                    if(err) throw err
+                    console.log(res)
+                })
+        } )
+    })
+
+    describe('#/track/like/:useraccount', ()=>{
+        it('put user update without err', async()=>{
+            request(app)
+                .get('/track/like/lucien')
+                .expect('Content-Type',/json/)
+                .expect(200)
+                .end((err, res)=>{
+                    if(err) throw err
+                    console.log(res)
+                })
+        } )
+    })
+})
+
+//-----------------------------------------------OTHERS -- route ----------------------------
+describe('#/others-route', ()=>{
+    describe('#/shop/:socialID', ()=>{
+        it('get user by useraccount without err', async()=>{
+            request(app)
+                .get('/shop/588888545552133366')
+                .expect('Content-Type',/json/)
+                .expect(200)
+                .end((err, res)=>{
+                    if(err) throw err
+                    console.log(res)
+                })
+        } )
+    })
+})
+
+//-----------------------------------------------OTHERS -- route ----------------------------
+describe('#/others-route', ()=>{
+    describe('#/shop/:socialID', ()=>{
+        it('get user by useraccount without err', async()=>{
+            request(app)
+                .get('/shop/588888545552133366')
+                .expect('Content-Type',/json/)
+                .expect(200)
+                .end((err, res)=>{
+                    if(err) throw err
+                    console.log(res)
+                })
+        } )
+    })
+})
+
+//-----------------------------------------------BASE -- route ----------------------------
+describe('#/base-route', ()=>{
+    describe('#/like/:socialID', ()=>{
+        it('get user by useraccount without err', async()=>{
+            request(app)
+                .get('/like/588888545552133366')
+                .expect('Content-Type',/json/)
+                .expect(200)
+                .end((err, res)=>{
+                    if(err) throw err
+                    console.log(res)
+                })
+        } )
+    })
+
+    describe('#/comment/:socialID', ()=>{
+        it('get user by useraccount without err', async()=>{
+            request(app)
+                .get('/comment/588888545552133366')
+                .expect('Content-Type',/json/)
+                .expect(200)
+                .end((err, res)=>{
+                    if(err) throw err
+                    console.log(res)
+                })
+        } )
+    })
+})
+
+//-----------------------------------------------FOODCOMMENT -- route ----------------------------
+describe('#/foodcomment-route', ()=>{
+    describe('#/foodComment/listByLocalAndCondition', ()=>{
+        it('get user by useraccount without err', async()=>{
+            request(app)
+                .get('/foodComment/listByLocalAndCondition')
+                .expect('Content-Type',/json/)
+                .expect(200)
+                .end((err, res)=>{
+                    if(err) throw err
+                    console.log(res)
+                })
+        })
+    })
+
+    describe('#/foodComment/listByUserCollectionAndCondition', ()=>{
+        it('get user by useraccount without err', async()=>{
+            request(app)
+                .get('/foodComment/listByUserCollectionAndCondition')
+                .expect('Content-Type',/json/)
+                .expect(200)
+                .end((err, resq)=>{
+                    if(err) throw err
+                    console.log(res)
+                })
+        })
+    })
+
+    describe('#/foodComment/img/#foodCommentId', ()=>{
+        it('get user by useraccount without err', async()=>{
+            request(app)
+                .get('/comment/588888545552133366')
+                .expect('Content-Type',/json/)
+                .expect(200)
+                .end((err, res)=>{
+                    if(err) throw err
+                    console.log(res)
+                })
+        })
+    })
+
+    describe('#/foodComment/#socialID', ()=>{
+        it('get user by useraccount without err', async()=>{
+            request(app)
+                .get('/comment/588888545552133366')
+                .expect('Content-Type',/json/)
+                .expect(200)
+                .end((err, res)=>{
+                    if(err) throw err
+                    console.log(res)
+                })
+        })
+    })
+})
+
+//-----------------------------------------------LOOKING -- route ----------------------------
+describe('#/looking-route', ()=>{
+    describe('#/looking', ()=>{
+        it('get user by useraccount without err', async()=>{
+            request(app)
+                .get('/looking')
+                .send({
+
+                })
+                .expect('Content-Type',/json/)
+                .expect(200)
+                .end((err, res)=>{
+                    if(err) throw err
+                    console.log(res)
+                })
+        })
+    })
+
+    describe('#/foodComment/listByUserCollectionAndCondition', ()=>{
+        it('get user by useraccount without err', async()=>{
+            request(app)
+                .get('/foodComment/listByUserCollectionAndCondition')
+                .expect('Content-Type',/json/)
+                .expect(200)
+                .end((err, resq)=>{
+                    if(err) throw err
+                    console.log(res)
+                })
+        })
+    })
+
+    describe('#/foodComment/img/#foodCommentId', ()=>{
+        it('get user by useraccount without err', async()=>{
+            request(app)
+                .get('/comment/588888545552133366')
+                .expect('Content-Type',/json/)
+                .expect(200)
+                .end((err, res)=>{
+                    if(err) throw err
+                    console.log(res)
+                })
+        })
+    })
+})
