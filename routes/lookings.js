@@ -4,7 +4,7 @@ const sLooking = require('../services/ser_looking'),
 
 /** 
    * 通过定位和条件获取寻食贴
-   * 2.1 GET /looking/listByLocalAndCondition
+   * 2.1 GET /looking/listByLocalAndCondition0
    * @param:local
    * @return:Looking
    */ 
